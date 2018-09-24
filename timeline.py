@@ -13,7 +13,7 @@ def post_timeline():
     mensagens_usuario = []
     
     for mensagem in range(len(mensagens['messages'])):
-        if mensagens['messages'][mensagem]['user_id'] == id:
+        if int(mensagens['messages'][mensagem]['user_id'][0]) == id:
             mensagens_usuario.append(mensagens['messages'][mensagem]['message'])
     
     return jsonify({'messages': mensagens_usuario}), 200
@@ -28,12 +28,12 @@ def home_timeline():
     mensagens_usuarios = []
     
     for mensagem in range(len(mensagens['messages'])):
-        if mensagens['messages'][mensagem]['user_id'] == id:
+        if int(mensagens['messages'][mensagem]['user_id'][0]) == id:
             mensagens_usuario.append(mensagens['messages'][mensagem]['message'])
             
     for usuario_id in range (len(usuarios['users'][id]['following'])):
         for mensagem in range(len(mensagens['messages'])):
-            if mensagens['messages'][mensagem]['user_id'] == usuario_id:
+            if int(mensagens['messages'][mensagem]['user_id'][0])== usuario_id:
                 mensagens_usuario.append(mensagens['messages'][mensagem]['message'])
                     
     return jsonify({'messages': mensagens_usuarios}), 200    
