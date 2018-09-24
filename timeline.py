@@ -7,7 +7,7 @@ import requests
 app = Flask(__name__)
 
 @app.route('/<id>/post', methods=['GET'])
-def post_timeline():
+def post_timeline(id):
     r                 = requests.get('http://messages-tpes2.herokuapp.com/')
     mensagens         = r.json()
     mensagens_usuario = []
@@ -20,7 +20,7 @@ def post_timeline():
 
 
 @app.route('/<id>/home', methods=['GET'])
-def home_timeline():
+def home_timeline(id):
     r                  = requests.get('http://messages-tpes2.herokuapp.com/')
     mensagens          = r.json()
     r                  = requests.get('https://twitter-eng2-users.herokuapp.com/')
