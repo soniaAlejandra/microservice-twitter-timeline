@@ -29,11 +29,13 @@ def home_timeline(id):
     for mensagem in range(len(mensagens['messages'])):
         if mensagens['messages'][mensagem]['user_id'] == int(id):
             mensagens_usuarios.append(mensagens['messages'][mensagem]['message'])
-   
-    for usuario_id in range(len(usuarios['users'][int(id)]['following'])):
-        for mensagem in range(len(mensagens['messages'])):
-            if mensagens['messages'][mensagem]['user_id'] == usuario_id:
-                mensagens_usuarios.append(mensagens['messages'][mensagem]['message'])
+    
+    for usuario in range(len(usuarios['users'])):
+        if usuarios['users'][usuario]['id'] == int(id):
+            for id_amigo in usuarios['users'][usuario]['following']:
+                for mensagem in range(len(mensagens['messages'])):
+                    if mensagens['messages'][mensagem]['user_id'] == int(id_amigo):
+                        mensagens_usuarios.append(mensagens['messages'][mensagem]['message'])
     return jsonify({ 'messages': mensagens_usuarios }), 200    
 
 
