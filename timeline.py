@@ -16,7 +16,7 @@ def post_timeline(id):
         if int(mensagens['messages'][mensagem]['user_id'][0]) == id:
             mensagens_usuario.append(mensagens['messages'][mensagem]['message'])
     
-    return jsonify({'messages': mensagens_usuario}), 200
+    return jsonify({ 'messages': mensagens_usuario }), 200
 
 
 @app.route('/<id>/home', methods=['GET'])
@@ -31,12 +31,12 @@ def home_timeline(id):
         if int(mensagens['messages'][mensagem]['user_id'][0]) == id:
             mensagens_usuario.append(mensagens['messages'][mensagem]['message'])
             
-    for usuario_id in range (len(usuarios['users'][id]['following'])):
+    for usuario_id in range(len(usuarios['users'][id]['following'])):
         for mensagem in range(len(mensagens['messages'])):
             if int(mensagens['messages'][mensagem]['user_id'][0])== usuario_id:
                 mensagens_usuario.append(mensagens['messages'][mensagem]['message'])
                     
-    return jsonify({'messages': mensagens_usuarios}), 200    
+    return jsonify({ 'messages': mensagens_usuarios }), 200    
 
 
 if __name__ == '__main__':
