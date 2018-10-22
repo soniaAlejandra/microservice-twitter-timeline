@@ -3,8 +3,10 @@ import copy
 from flask import Flask, request, jsonify
 import sys
 import requests
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 def checaUsuarioExistente(id):
     try:
@@ -21,7 +23,7 @@ def post_timeline(id):
         if checaUsuarioExistente(id) == 500:
             return jsonify({ 'type': 'UNKNOWN', 'description': 'An unknown error was detected'}), 500
 
-    r                 = requests.get('http://messages-tpes2.herokuapp.com/')
+    r                 = requests.get('http://messages-twitter.herokuapp.com/')
     mensagens         = r.json()
     mensagens_usuario = []
     
@@ -39,7 +41,7 @@ def home_timeline(id):
         if checaUsuarioExistente(id) == 500:
             return jsonify({ 'type': 'UNKNOWN', 'description': 'An unknown error was detected'}), 500
 
-    r                  = requests.get('http://messages-tpes2.herokuapp.com/')
+    r                  = requests.get('http://messages-twitter.herokuapp.com/')
     mensagens          = r.json()
     r                  = requests.get('https://twitter-eng2-users.herokuapp.com/')
     usuarios           = r.json()
