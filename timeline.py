@@ -29,7 +29,7 @@ def post_timeline(id):
     
     for mensagem in range(len(mensagens['messages'])):
         if mensagens['messages'][mensagem]['user_id'] == int(id):
-            mensagens_usuario.append(mensagens['messages'][mensagem]['message'])
+            mensagens_usuario.append({ 'mensagem': mensagens['messages'][mensagem]['message'], 'id': id})
     return jsonify({ 'messages': mensagens_usuario }), 200
 
 
