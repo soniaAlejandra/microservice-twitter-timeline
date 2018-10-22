@@ -29,7 +29,7 @@ def post_timeline(id):
     
     for mensagem in range(len(mensagens['messages'])):
         if mensagens['messages'][mensagem]['user_id'] == int(id):
-            mensagens_usuario.append({ 'mensagem': mensagens['messages'][mensagem]['message'], 'id': id})
+            mensagens_usuario.append({ 'message: mensagens['messages'][mensagem]['message'], 'id': id})
     return jsonify({ 'messages': mensagens_usuario }), 200
 
 
@@ -48,7 +48,7 @@ def home_timeline(id):
     mensagens_usuarios = []    
     for mensagem in range(len(mensagens['messages'])):
         if mensagens['messages'][mensagem]['user_id'] == int(id):
-            mensagens_usuarios.append({'mensagem': mensagens['messages'][mensagem]['message'], 'id': id})
+            mensagens_usuarios.append({'message': mensagens['messages'][mensagem]['message'], 'id': id})
     
     for usuario in range(len(usuarios['users'])):
         if usuarios['users'][usuario]['id'] == int(id):
@@ -60,7 +60,7 @@ def home_timeline(id):
                         return jsonify({ 'type': 'UNKNOWN', 'description': 'An unknown error was detected'}), 500
                 for mensagem in range(len(mensagens['messages'])):
                     if mensagens['messages'][mensagem]['user_id'] == int(id_amigo):
-                        mensagens_usuarios.append({'mensagem': mensagens['messages'][mensagem]['message'], 'id': id_amigo})
+                        mensagens_usuarios.append({'message': mensagens['messages'][mensagem]['message'], 'id': id_amigo})
     return jsonify({ 'messages': mensagens_usuarios }), 200    
 
 
